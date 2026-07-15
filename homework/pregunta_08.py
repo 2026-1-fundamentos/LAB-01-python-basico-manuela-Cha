@@ -5,7 +5,7 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
-
+from .leer_archivo import leer_archivo
 def pregunta_08():
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla
@@ -27,3 +27,21 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+
+    datos = {}
+
+    for fila in leer_archivo():
+        letra = fila[0]
+        numero = int(fila[1])
+        if numero not in datos:
+            datos[numero] = set()
+        datos[numero].add(letra)
+
+    respuesta = []
+    
+    for numero in sorted(datos):
+        respuesta.append((numero, sorted(datos[numero])))
+
+    return respuesta
+
+print(pregunta_08())

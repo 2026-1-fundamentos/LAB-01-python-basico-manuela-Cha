@@ -5,6 +5,7 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
+from .leer_archivo import leer_archivo
 
 def pregunta_06():
     """
@@ -26,3 +27,24 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+
+    datos = {}
+
+    for fila in leer_archivo():
+        elementos = fila[4].split(",")
+        for elemento in elementos:
+            clave, valor = elemento.split(":")
+            valor = int(valor)
+            if clave not in datos:
+                datos[clave] = []
+            datos[clave].append(valor)
+
+    respuesta = []
+
+    for clave in sorted(datos):
+        respuesta.append((clave, min(datos[clave]), max(datos[clave])))
+
+    return respuesta
+
+print (pregunta_06())   

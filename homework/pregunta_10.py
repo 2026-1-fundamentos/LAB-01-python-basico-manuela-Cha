@@ -5,7 +5,7 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
-
+from .leer_archivo import leer_archivo
 def pregunta_10():
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la
@@ -20,3 +20,15 @@ def pregunta_10():
 
 
     """
+
+    respuesta = []
+
+    for fila in leer_archivo():
+        letra = fila[0]
+        cantidad_col4 = len(fila[3].split(","))
+        cantidad_col5 = len(fila[4].split(","))
+        respuesta.append((letra, cantidad_col4, cantidad_col5))
+
+    return respuesta
+
+print(pregunta_10())

@@ -4,7 +4,7 @@ datos requeridos se encuentran en el archivo data.csv. En este laboratorio
 solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
-
+from .leer_archivo import leer_archivo
 
 def pregunta_07():
     """
@@ -25,3 +25,16 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+
+    datos = {}
+
+    for fila in leer_archivo():
+        letra = fila[0]
+        numero = int(fila[1])
+        if numero not in datos:
+            datos[numero] = []
+        datos[numero].append(letra)
+
+    return sorted(datos.items())
+
+print(pregunta_07())

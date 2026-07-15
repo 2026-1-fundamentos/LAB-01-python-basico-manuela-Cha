@@ -5,7 +5,7 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
-
+from .leer_archivo import leer_archivo
 def pregunta_09():
     """
     Retorne un diccionario que contenga la cantidad de registros en que
@@ -24,3 +24,14 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    contador = {}
+    for fila in leer_archivo():
+        for elemento in fila[4].split(","):
+            clave = elemento.split(":")[0]
+            if clave not in contador:
+                contador[clave] = 0
+            contador[clave] += 1
+    return dict(sorted(contador.items()))
+
+print(pregunta_09())
