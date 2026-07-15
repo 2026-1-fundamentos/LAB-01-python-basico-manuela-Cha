@@ -27,4 +27,4 @@ def pregunta_03():
 
     return sorted(suma.items())
 
-#print(pregunta_03()) 
+print(pregunta_03()) 
